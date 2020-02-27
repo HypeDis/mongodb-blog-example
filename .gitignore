@@ -1,0 +1,16 @@
+# ignore everything
+/*
+
+#whitelist
+!.eslint*
+!.gitignore
+!.prettierrc.*
+!Readme.md
+!package.json
+!package-lock.json
+!babel.config*
+!server
+!src
+!client
+!public
+!snowpack.config.*
