@@ -33,6 +33,7 @@ const _Home = ({ allPosts, switchMode }) => {
 
 _Home.propTypes = {
   allPosts: PropTypes.array,
+  switchMode: PropTypes.func,
 };
 
 const mapState = ({ allPosts }) => ({ allPosts });

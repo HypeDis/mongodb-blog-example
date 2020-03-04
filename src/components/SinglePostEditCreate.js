@@ -16,6 +16,9 @@ const _SinglePostEditCreate = ({
 }) => {
   const [title, setTitle] = useState(post ? post.title : '');
   const [content, setContent] = useState(post ? post.content : '');
+  const [tags, setTags] = useState(
+    post && post.tags ? post.tags.join(',') : ''
+  );
   // there was a bug when switching from edit to create mode where data remained in the inputs.
   // explicity clearing data when mode changes to create
   useEffect(() => {
@@ -44,8 +47,9 @@ const _SinglePostEditCreate = ({
         className="single-post__form"
         onSubmit={evt => {
           evt.preventDefault();
-          if (mode === 'EDIT') editPost({ _id: post._id, title, content });
-          else createPost({ title, content });
+          if (mode === 'EDIT')
+            editPost({ _id: post._id, title, content, tags: tags.split(',') });
+          else createPost({ title, content, tags: tags.split(',') });
         }}
       >
         <div className="single-post__input-group">
@@ -59,6 +63,20 @@ const _SinglePostEditCreate = ({
             value={title}
             onChange={evt => {
               setTitle(evt.target.value);
+            }}
+          />
+        </div>
+        <div className="single-post__input-group">
+          <label htmlFor="single-post__tags">Tags</label>
+          <input
+            id="single-post__tags"
+            className="single-post__input-text"
+            type="text"
+            name="tags"
+            placeholder="add some tags"
+            value={tags}
+            onChange={evt => {
+              setTags(evt.target.value);
             }}
           />
         </div>

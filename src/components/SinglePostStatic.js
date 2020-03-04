@@ -25,6 +25,9 @@ const _SinglePostStatic = ({ post, switchMode }) => {
           />
         </h1>
       </div>
+      <p style={{ textAlign: 'center', marginTop: '2rem' }}>
+        Tags: {post.tags.join(',') || 'None'}
+      </p>
       <div className="single-post__content">
         {post.content.split('\n').map((paragraph, idx) => {
           return (
